@@ -1,0 +1,2 @@
+module ConHelper
+end
