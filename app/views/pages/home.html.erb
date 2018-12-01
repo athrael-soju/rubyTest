@@ -1,2 +1,41 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<html>
+<head>
+  <title>The ForEx App</title>
+</head>
+<body>
+<h1>Welcome to the 'Pretty Good' Foreign Exchange Application</h1>
+  <form>
+    <div class="form-group">
+    <label for="exampleFormControlSelectDate">Date</label>
+    <input type="text" data-provide='datepicker'  class="form-control">
+    </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">From</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">To</label>
+    <select class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+    <div class="form-group">
+      <label for="number-input" class="col-2 col-form-label">Amount</label>
+      <div class="col-10">
+        <input class="form-control" type="number" min="0" value="0" id="number-input">
+      </div>
+    </div>
+</form>
+<button type="submit" class="btn btn-default btn-lg btn-block">Convert</button>
+</body>
+<p>Clone me at: <a href="https://github.com/athrael-soju/rubyTest" target="_blank">Git</a></p>
