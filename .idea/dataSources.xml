@@ -10,12 +10,5 @@
         <property name="enable_load_extension" value="true" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml" uuid="ffcc63ae-60f4-429d-b0da-6ef42d1dabd0">
-      <driver-ref>redshift</driver-ref>
-      <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
-      <jdbc-driver>com.amazon.redshift.jdbc.Driver</jdbc-driver>
-      <jdbc-url>https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml</jdbc-url>
-    </data-source>
   </component>
 </project>

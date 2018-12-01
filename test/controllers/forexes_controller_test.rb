@@ -17,7 +17,7 @@ class ForexesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create forex" do
     assert_difference('Forex.count') do
-      post forexes_url, params: { forex: { currency: @forex.currency, value: @forex.value } }
+      post forexes_url, params: { forex: { currency: @forex.currency, rate: @forex.rate } }
     end
 
     assert_redirected_to forex_url(Forex.last)
@@ -34,7 +34,7 @@ class ForexesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update forex" do
-    patch forex_url(@forex), params: { forex: { currency: @forex.currency, value: @forex.value } }
+    patch forex_url(@forex), params: { forex: { currency: @forex.currency, rate: @forex.rate } }
     assert_redirected_to forex_url(@forex)
   end
 

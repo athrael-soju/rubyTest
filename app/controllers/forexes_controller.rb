@@ -69,6 +69,6 @@ class ForexesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def forex_params
-      params.require(:forex).permit(:currency, :value)
+      params.require(:forex).permit(:currency, :rate)
     end
 end
