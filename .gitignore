@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+app/assets/forex/eurofxref-daily.xml
+.idea/workspace.xml
+.idea/dataSources/

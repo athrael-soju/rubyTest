@@ -15,7 +15,7 @@
     <% @forexes.each do |forex| %>
       <tr>
         <td><%= forex.currency %></td>
-        <td><%= forex.value %></td>
+        <td><%= forex.rate %></td>
         <td><%= link_to 'Show', forex %></td>
         <td><%= link_to 'Edit', edit_forex_path(forex) %></td>
         <td><%= link_to 'Destroy', forex, method: :delete, data: { confirm: 'Are you sure?' } %></td>
