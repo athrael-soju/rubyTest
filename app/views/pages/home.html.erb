@@ -6,36 +6,37 @@
 <h1>Welcome to the 'Pretty Good' Foreign Exchange Application</h1>
   <form>
     <div class="form-group">
-    <label for="exampleFormControlSelectDate">Date</label>
-    <input type="text" data-provide='datepicker'  class="form-control">
+    <label for="datepicker">Date</label>
+    <input type="text" data-provide='datepicker'  class="form-control" id="datepicker">
     </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">From</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <label for="formControlSelect1">From</label>
+    <select class="form-control" id="formControlSelect1" name="formControlSelect1">
+      <%= @option_list.html_safe %>
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect2">To</label>
-    <select class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    <label for="formControlSelect2">To</label>
+    <select class="form-control" id="formControlSelect2" name="formControlSelect2">
+      <%= @option_list.html_safe %>
     </select>
   </div>
     <div class="form-group">
-      <label for="number-input" class="col-2 col-form-label">Amount</label>
+      <label for="number_input" class="col-2 col-form-label" >Amount</label>
       <div class="col-10">
-        <input class="form-control" type="number" min="0" value="0" id="number-input">
+        <input class="form-control" type="number" min="0" value="0" id="number_input" name="number_input">
       </div>
     </div>
+    <div class="form-group">
+      <label for="currex-input" class="col-2 col-form-label">Result</label>
+      <div class="col-10">
+        <input class="form-control" disabled value="<%= @message %>" id="currex-input">
+      </div>
+    </div>
+    <input type="submit" class="btn btn-default btn-lg btn-block">
+    <%#=  link_to "Convert Currency", pages_contact_path, remote:true, :class => "btn btn-default btn-lg btn-block", :onclick => "this.submit();"%>
 </form>
-<button type="submit" class="btn btn-default btn-lg btn-block">Convert</button>
 </body>
 <p>Clone me at: <a href="https://github.com/athrael-soju/rubyTest" target="_blank">Git</a></p>
+
+
