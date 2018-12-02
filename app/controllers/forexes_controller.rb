@@ -1,3 +1,4 @@
+require 'nokogiri'
 class ForexesController < ApplicationController
   before_action :set_forex, only: [:show, :edit, :update, :destroy]
 
@@ -59,6 +60,17 @@ class ForexesController < ApplicationController
       format.html { redirect_to forexes_url, notice: 'Forex was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def get_rates
+    doc = Nokogiri::XML(open("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"))
+    time_now = DateTime.now.strftime('%a, %d %b %Y %H:%M:%S')
+    doc.xpath("//xmlns:Cube/xmlns:Cube/xmlns:Cube").each do |row|
+        currency = row.attribute('currency')
+        rate = row.attribute('rate')
+        update_forex = "UPDATE forexes SET rate=#{rate}, updated_at='#{time_now}' WHERE currency ='#{currency}'"
+        ActiveRecord::Base.connection.execute(update_forex)
+      end
   end
 
   private
