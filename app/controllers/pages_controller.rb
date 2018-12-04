@@ -4,6 +4,8 @@ class PagesController < ApplicationController
   def home
       init_on_load
       check_if_submit
+
+
   end
 
   def init_on_load
@@ -30,26 +32,40 @@ class PagesController < ApplicationController
   end
 
   def generate_currency_collection
-    @option_list = ''
+    @option_list1 = ''
+    @option_list2 = ''
     select_currencies ="select currency from forexes"
     currencies = ActiveRecord::Base.connection.execute(select_currencies)
 
     currencies.each do |row|
-      @option_list+= '<option>'+row['currency']+'</option><br/>'
+
+      if params[:formControlSelect1] == row['currency']
+        option1 = "<option selected>"
+      else
+        option1 = "<option>"
+      end
+      if params[:formControlSelect2] == row['currency']
+        option2 = "<option selected>"
+      else
+        option2 = "<option>"
+      end
+
+      @option_list1+= option1+row['currency']+'</option><br/>'
+      @option_list2+= option2+row['currency']+'</option><br/>'
     end
   end
 
   def calculate_exchange
     cur1 = params[:formControlSelect1]
     cur2 = params[:formControlSelect2]
-    quantity = params[:number_input].to_f
+    quantity = params[:quantity].to_f
     select_rate1 ="select rate from forexes where currency = '#{cur1}'"
     select_rate2 ="select rate from forexes where currency = '#{cur2}'"
 
     rate1 = ActiveRecord::Base.connection.execute(select_rate1)[0]['rate']
     rate2 = ActiveRecord::Base.connection.execute(select_rate2)[0]['rate']
     formatted_conversion = number_to_human(((1/rate1)*rate2*quantity))
-    formatted_quantity = number_to_human(params[:number_input].to_f)
+    formatted_quantity = number_to_human(params[:quantity].to_f)
     @conversion_result = "#{formatted_quantity} #{cur1} is equivalent to: #{formatted_conversion} #{cur2}"
   end
 
