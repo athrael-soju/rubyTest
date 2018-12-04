@@ -3,14 +3,18 @@ include ActionView::Helpers::NumberHelper
 class PagesController < ApplicationController
   def home
       init_on_load
-      if params[:formControlSelect1]
-        calculate_exchange
-      end
+      check_if_submit
   end
 
   def init_on_load
     generate_currency_collection
     calculate_dates
+  end
+
+  def check_if_submit
+    if params[:commit] == "Submit"
+      calculate_exchange
+    end
   end
 
   def calculate_dates
@@ -48,4 +52,5 @@ class PagesController < ApplicationController
     formatted_quantity = number_to_human(params[:number_input].to_f)
     @conversion_result = "#{formatted_quantity} #{cur1} is equivalent to: #{formatted_conversion} #{cur2}"
   end
+
 end
