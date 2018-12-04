@@ -4,8 +4,6 @@ class PagesController < ApplicationController
   def home
       init_on_load
       check_if_submit
-
-
   end
 
   def init_on_load
@@ -49,7 +47,6 @@ class PagesController < ApplicationController
       else
         option2 = "<option>"
       end
-
       @option_list1+= option1+row['currency']+'</option><br/>'
       @option_list2+= option2+row['currency']+'</option><br/>'
     end
@@ -65,7 +62,7 @@ class PagesController < ApplicationController
     rate1 = ActiveRecord::Base.connection.execute(select_rate1)[0]['rate']
     rate2 = ActiveRecord::Base.connection.execute(select_rate2)[0]['rate']
     formatted_conversion = number_to_human(((1/rate1)*rate2*quantity))
-    formatted_quantity = number_to_human(params[:quantity].to_f)
+    formatted_quantity = number_to_human(quantity)
     @conversion_result = "#{formatted_quantity} #{cur1} is equivalent to: #{formatted_conversion} #{cur2}"
   end
 
