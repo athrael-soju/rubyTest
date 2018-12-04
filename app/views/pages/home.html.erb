@@ -3,11 +3,16 @@
   <title>The ForEx App</title>
 </head>
 <body>
-<h1>Welcome to the 'Pretty Good' Foreign Exchange Application</h1>
+<h1>Welcome to the 'Decent' Foreign Exchange Application</h1>
   <form>
     <div class="form-group">
-    <label for="datepicker">Date</label>
-    <input type="text" data-provide='datepicker'  class="form-control" id="datepicker">
+    <label for="date_now">Dates</label>
+      <div class="col-10">
+        <input class="form-control" disabled value="<%= @date_now %>" id="date_now"><br/>
+      </div>
+      <div class="col-10">
+        <input class="form-control" disabled value="<%= @last_updated %>" id="date_updated">
+      </div>
     </div>
   <div class="form-group">
     <label for="formControlSelect1">From</label>
@@ -24,17 +29,16 @@
     <div class="form-group">
       <label for="number_input" class="col-2 col-form-label" >Amount</label>
       <div class="col-10">
-        <input class="form-control" type="number" min="0" value="0" id="number_input" name="number_input">
+        <input class="form-control" type="number" step="0.01" min="1" value="1" id="number_input" name="number_input">
       </div>
     </div>
     <div class="form-group">
       <label for="currex-input" class="col-2 col-form-label">Result</label>
       <div class="col-10">
-        <input class="form-control" disabled value="<%= @message %>" id="currex-input">
+        <input class="form-control" disabled value="<%= @conversion_result %>" id="currex-input">
       </div>
     </div>
     <input type="submit" class="btn btn-default btn-lg btn-block">
-    <%#=  link_to "Convert Currency", pages_contact_path, remote:true, :class => "btn btn-default btn-lg btn-block", :onclick => "this.submit();"%>
 </form>
 </body>
 <p>Clone me at: <a href="https://github.com/athrael-soju/rubyTest" target="_blank">Git</a></p>
