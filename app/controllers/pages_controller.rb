@@ -20,12 +20,11 @@ class PagesController < ApplicationController
   def calculate_dates
     select_date ="select updated_at from forexes where currency = 'USD'"
     get_date = ActiveRecord::Base.connection.execute(select_date)[0]['updated_at']
-    @date_now = "Current:             " + DateTime.now.strftime('%a, %d %b %Y %H:%M:%S')
-    @last_updated = "Rates updated:   #{get_date}"
+    @last_updated = "Last update:   #{get_date}"
 
     difference_in_dates = (DateTime.now - Date.parse(get_date)).to_i
     if difference_in_dates > 0
-      @last_updated+= "(Days outdated: #{difference_in_dates}. Consider updating rates.)"
+      @last_updated+= " - Days outdated: #{difference_in_dates}."
     end
   end
 
