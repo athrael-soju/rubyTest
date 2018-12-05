@@ -25,7 +25,7 @@ class PagesController < ApplicationController
 
     difference_in_dates = (DateTime.now - Date.parse(get_date)).to_i
     if difference_in_dates > 0
-      @last_updated+= "(#{difference_in_dates} days behind. Consider updating rates.)"
+      @last_updated+= "(Days outdated: #{difference_in_dates}. Consider updating rates.)"
     end
   end
 
@@ -34,21 +34,17 @@ class PagesController < ApplicationController
     @option_list2 = ''
     select_currencies ="select currency from forexes"
     currencies = ActiveRecord::Base.connection.execute(select_currencies)
-
+    cur1 = params[:formControlSelect1]
+    cur2 = params[:formControlSelect2]
     currencies.each do |row|
+      @option_list1+= "<option #{adjust_dropdowns_if_selected(cur1, row)}>"+row['currency']+'</option><br/>'
+      @option_list2+= "<option #{adjust_dropdowns_if_selected(cur2, row)}>"+row['currency']+'</option><br/>'
+    end
+  end
 
-      if params[:formControlSelect1] == row['currency']
-        option1 = "<option selected>"
-      else
-        option1 = "<option>"
-      end
-      if params[:formControlSelect2] == row['currency']
-        option2 = "<option selected>"
-      else
-        option2 = "<option>"
-      end
-      @option_list1+= option1+row['currency']+'</option><br/>'
-      @option_list2+= option2+row['currency']+'</option><br/>'
+  def adjust_dropdowns_if_selected(param, row)
+    if param == row['currency']
+      "selected"
     end
   end
 
