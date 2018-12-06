@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CurrencyExchangeControllerTest < ActionDispatch::IntegrationTest
+class ForexTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Forexes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Currency</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @forexes.each do |forex| %>
+      <tr>
+        <td><%= forex.currency %></td>
+        <td><%= forex.rate %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Update Conversion Rates', get_rates_path, remote:true %>
+

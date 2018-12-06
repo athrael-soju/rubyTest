@@ -29,3 +29,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+app/assets/forex/eurofxref-daily.xml
+.idea/workspace.xml
+.idea/dataSources/
+1.6.4.1
+bootstrap-datepicker-rails

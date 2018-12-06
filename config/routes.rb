@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  resources :forexes
+  root 'pages#home'
+  get 'pages/about'
+  get 'pages/home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :main
-
+  get  'get_rates' => 'forexes#get_rates', :as => 'get_rates'
+  get  'calculate_exchange' => 'pages#calculate_exchange', :as => 'calculate_exchange'
 end

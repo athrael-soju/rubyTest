@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>The ForEx App</title>
+</head>
+<body>
+<h1>Welcome to the 'Decent' Foreign Exchange Application</h1>
+<form>
+  <div class="form-group">
+    <label for="date_now">Currency Rates</label>
+      <input class="form-control" disabled value="<%= @last_updated %>" id="date_updated">
+  </div>
+  <div class="form-group">
+    <label for="formControlSelect1">From</label>
+    <select class="form-control" id="formControlSelect1" name="formControlSelect1">
+      <%= @option_list1.html_safe %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="formControlSelect2">To</label>
+    <select class="form-control" id="formControlSelect2" name="formControlSelect2">
+      <%= @option_list2.html_safe %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="quantity" class="col-2 col-form-label">Amount</label>
+    <input class="form-control" type="number" step="0.1" min="1" value="1" id="quantity" name="quantity">
+  </div>
+  <div class="form-group">
+    <label for="currex-input" class="col-2 col-form-label">Result</label>
+      <input class="form-control" disabled value="<%= @conversion_result %>" id="currex-input">
+  </div>
+  <div class="form-group">
+    <%= submit_tag 'Submit', class: "btn btn-default btn-lg btn-block" %>
+  </div>
+</form>
+</body>
+<p>Clone me at: <a href="https://github.com/athrael-soju/rubyTest" target="_blank">Git</a></p>
+
+
